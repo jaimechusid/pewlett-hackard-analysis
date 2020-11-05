@@ -16,3 +16,28 @@ After completing this analysis, I gathered the following results:
 - After the "silver tsunami", the number of employees at Pewlett Hackard will drop from ~300,000 to ~210,000.
 
 ## Summary
+As mentioned above, as the "silver tsunami" begins to make an impact, Pewlett Hackard will have to fill approximately 90,000 roles. With only 1,546 employees eligible for the mentorship program, there are not nearly enough employees to mentor the next generation of Pewlett Hackard employees. However, if the company decides to hire in smaller waves, perhaps each mentor can be assigned to a group of new hires. To see the breakdown in mentorship eligible employees by department, I've run the query below and achieved the following results.
+
+  SELECT
+    d.dept_name,
+    COUNT(m.emp_no)
+  FROM mentorship_eligibility m 
+  LEFT JOIN dept_emp de on de.emp_no = m.emp_no
+  LEFT JOIN departments d on d.dept_no = de.dept_no
+  GROUP BY d.dept_name;
+  
+  ![Mentor by Department](mentor_dept.png)
+  
+Looking at the results above, mentors and new employees can be broken down by department for training. There are the highest number of mentors in the Development, Production, and Sales departments. To see if this matches up with the hires that will be necessary following the "silver tsunami", I've run a similar query to determine the breakdown of retiring employees by department.
+
+  SELECT
+    d.dept_name,
+    COUNT(u.emp_no)
+  FROM unique_titles u 
+  LEFT JOIN dept_emp de on de.emp_no = u.emp_no
+  LEFT JOIN departments d on d.dept_no = de.dept_no
+  GROUP BY d.dept_name;
+  
+  ![Retiring by Department](retiring_dept.png)
+  
+Looking at the results, the majority of retiring employees come from the Development, Production, and Sales departments. This matches up with the proportions of employees eligibile for the mentorship program. This is helpful information to have, because we now know the number of mentors will line up with the necessary new hires when divided by department. 
