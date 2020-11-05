@@ -11,7 +11,7 @@ After completing this analysis, I gathered the following results:
 - 90,398 employees at Pewlett Hackard are reaching retirement age.
 - The majority of retiring employees are either Senior Engineers or Senior Staff.
   - The full breakdown of retiring employees by title is shown below
-  -![Retiring Employees by Title](titles.png)
+  -![Retiring Employees by Title](data/titles.png)
 - Only 1,549 employees are eligible to participate in the mentorship program.
 - After the "silver tsunami", the number of employees at Pewlett Hackard will drop from ~300,000 to ~210,000.
 
